@@ -16,9 +16,12 @@ public class MysqlDBAccess extends DBAccess {
 
         Connection con=null;
         try {
-            con = DriverManager.getConnection(url,userName, Password);
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://" + url,userName, Password);
 
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
